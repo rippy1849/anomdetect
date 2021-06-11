@@ -1,0 +1,3 @@
+string = "stuff\\"
+
+print(string)
