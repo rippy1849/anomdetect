@@ -4,10 +4,18 @@ from angrutils import *
 import networkx as nx
 import matplotlib.pyplot as plt
 import os
+from pathlib import Path
+
 
 dataNum = 0
 
 directory = "./Programs"
+output_path = "dataset"
+base_path = Path(output_path)
+base_path.mkdir(exist_ok=True)
+
+
+
 for entry in os.scandir(directory):
     proj = angr.Project(entry.path, load_options={'auto_load_libs':False})
 #main = proj.loader.main_object.get_symbol("main")
@@ -37,13 +45,23 @@ for entry in os.scandir(directory):
             tmpmx = int(node1)
         if int(node2)>tmpmx:
             tmpmx = int(node2)
-            
+       
+        if edges['features'].get(int(node1)) == None:
+            edges['features'][int(node1)] = edges['features'].get(int(node1), 1)
+        else:
+            edges['features'][int(node1)] = edges['features'].get(int(node1)) + 1 
+        if edges['features'].get(int(node2)) == None:
+            edges['features'][int(node2)] = edges['features'].get(int(node2), 1)
+        else:
+            edges['features'][int(node2)] = edges['features'].get(int(node2)) + 1 
         
-    for i in range(0,tmpmx+1):
-        edges['features'][i] = 1
+        
+        
+    # for i in range(0,tmpmx+1):
+    #     edges['features'][i] = 1
 
     
-    with open("data" + str(dataNum) + '.json', 'w') as outfile:
+    with open("{}/{}.json".format(output_path, str(dataNum)), 'w') as outfile:
         json.dump(edges, outfile)
         
     dataNum += 1
