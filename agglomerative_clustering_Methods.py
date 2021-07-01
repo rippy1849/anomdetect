@@ -16,4 +16,3 @@ def main():
     agglomerativeClusterLabels = getAgglomerativeClusterLabels(data, 5)
     print("Agglomerative Clustering Labels:", agglomerativeClusterLabels)
     
-main()

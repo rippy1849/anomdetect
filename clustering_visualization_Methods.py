@@ -34,9 +34,10 @@ def generateTSNE_Visualization2D(data, color_map):
     #Visualization (t-SNE Algorithm)
     tsne_2d = TSNE(n_components=2, perplexity=3)
     TCs_2d = pd.DataFrame(tsne_2d.fit_transform(data))
-    plt.scatter(TCs_2d.loc[:,0],TCs_2d.loc[:,1],c  = color_map)
-    plt.title('TSNE 2 Dimension-Representation of ... Clustering')
-    plt.show()
+    p1 = plt.scatter(TCs_2d.loc[:,0],TCs_2d.loc[:,1],c  = color_map)
+    #plt.title('TSNE 2 Dimension-Representation of ... Clustering')
+    #plt.show()
+    return p1
 
 def generateTSNE_Visualization3D(data, color_map):
     tsne_3d = TSNE(n_components=2, perplexity=3)
@@ -68,4 +69,3 @@ def main():
 #     generateTSNE_Visualization2D(data, color_map, cluster_type)
 #     generateTSNE_Visualization3D(data, color_map, cluster_type)
 
-main()

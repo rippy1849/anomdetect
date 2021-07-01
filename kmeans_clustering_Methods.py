@@ -17,4 +17,3 @@ def main():
     # When eps is chosen too small, most data will not be clustered at all --> -1 means labeled for noise
     print("K-Means Clustering Labels:", kmeansClusterLabels)
     
-main()

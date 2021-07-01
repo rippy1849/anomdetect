@@ -20,5 +20,4 @@ def main():
     cluster_DBSCAN_Labels = getDBSCANClusterLabels(data, eps, min_samples)
     # When eps is chosen too small, most data will not be clustered at all --> -1 means labeled for noise
     print("DBSCAN Clustering Labels:", cluster_DBSCAN_Labels)
-    
-main()
+
